@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Moheet Shendarkar — Robotics Software Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #080c10;
+    --bg2: #0d1117;
+    --surface: #111820;
+    --border: #1e2d3d;
+    --accent: #00e5ff;
+    --accent2: #39ff82;
+    --accent3: #ff6b35;
+    --text: #c9d8e8;
+    --muted: #4a6070;
+    --grid: rgba(0,229,255,0.04);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* GRID BG */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* SCANLINES */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.12) 2px,
+      rgba(0,0,0,0.12) 4px
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  section, nav, footer { position: relative; z-index: 1; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 48px;
+    background: rgba(8,12,16,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+  }
+
+  .nav-logo {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 15px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+  }
+
+  .nav-logo span { color: var(--accent2); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 48px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .hero-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--accent2);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--accent2);
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: #e8f4ff;
+    margin-bottom: 8px;
+  }
+
+  h1 .accent { color: var(--accent); }
+  h1 .dim { color: var(--muted); font-weight: 400; }
+
+  .hero-role {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 16px;
+    color: var(--accent3);
+    letter-spacing: 0.08em;
+    margin: 28px 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .blink {
+    display: inline-block;
+    width: 10px; height: 18px;
+    background: var(--accent3);
+    animation: blink 1s step-end infinite;
+    vertical-align: middle;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .hero-bio {
+    max-width: 560px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 48px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+  }
+  .btn-primary:hover { background: transparent; color: var(--accent); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--border);
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 64px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .stat-item { display: flex; flex-direction: column; gap: 4px; }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: #e8f4ff;
+    line-height: 1;
+  }
+  .stat-num span { color: var(--accent); }
+  .stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ── SECTION COMMON ── */
+  .section-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 100px 48px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 64px;
+  }
+
+  .section-num {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--accent2);
+    letter-spacing: 0.2em;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: #e8f4ff;
+    letter-spacing: -0.02em;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--bg2); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: default;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+
+  .project-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .project-card:hover::before { transform: scaleX(1); }
+
+  .project-card.green::before { background: var(--accent2); }
+  .project-card.green:hover { border-color: var(--accent2); }
+  .project-card.orange::before { background: var(--accent3); }
+  .project-card.orange:hover { border-color: var(--accent3); }
+
+  .project-icon {
+    width: 48px; height: 48px;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    margin-bottom: 24px;
+    background: var(--bg);
+  }
+
+  .project-tag-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+
+  .tag.highlight { border-color: var(--accent); color: var(--accent); }
+  .tag.green { border-color: var(--accent2); color: var(--accent2); }
+  .tag.orange { border-color: var(--accent3); color: var(--accent3); }
+
+  .project-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #e8f4ff;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .project-desc {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .project-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .project-bullets li {
+    font-size: 12px;
+    color: var(--text);
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .project-bullets li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  .project-card.green .project-bullets li::before { color: var(--accent2); }
+  .project-card.orange .project-bullets li::before { color: var(--accent3); }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 2px;
+  }
+
+  .skill-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 28px;
+    transition: background 0.2s;
+  }
+  .skill-block:hover { background: #161f2a; }
+
+  .skill-block-title {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .skill-block-title.green { color: var(--accent2); }
+  .skill-block-title.orange { color: var(--accent3); }
+
+  .skill-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .pill {
+    font-size: 12px;
+    padding: 4px 12px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    transition: all 0.2s;
+  }
+  .pill:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--bg2); }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-left: 1px solid var(--border);
+    margin-left: 16px;
+  }
+
+  .timeline-item {
+    padding: 0 0 48px 40px;
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 6px;
+    width: 9px; height: 9px;
+    background: var(--accent);
+    border: 2px solid var(--bg2);
+  }
+
+  .timeline-item.dim::before { background: var(--muted); }
+
+  .tl-date {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    margin-bottom: 8px;
+  }
+
+  .tl-company {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #e8f4ff;
+    margin-bottom: 4px;
+  }
+
+  .tl-role {
+    font-size: 13px;
+    color: var(--accent);
+    margin-bottom: 16px;
+    letter-spacing: 0.05em;
+  }
+
+  .tl-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .tl-points li {
+    font-size: 13px;
+    color: var(--muted);
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .tl-points li::before {
+    content: '//';
+    position: absolute;
+    left: 0;
+    color: var(--accent2);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    top: 2px;
+  }
+
+  /* ── ACHIEVEMENTS ── */
+  .ach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .ach-card {
+    border: 1px solid var(--border);
+    padding: 24px;
+    background: var(--surface);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: border-color 0.25s;
+  }
+  .ach-card:hover { border-color: var(--accent2); }
+
+  .ach-icon { font-size: 24px; flex-shrink: 0; }
+  .ach-text { font-size: 13px; color: var(--text); line-height: 1.6; }
+  .ach-text strong { color: #e8f4ff; font-weight: normal; font-family: 'Syne', sans-serif; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--bg2); }
+
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .contact-headline {
+    font-family: 'Syne', sans-serif;
+    font-size: 42px;
+    font-weight: 800;
+    color: #e8f4ff;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+
+  .contact-headline span { color: var(--accent); }
+
+  .contact-sub {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 32px;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    transition: all 0.25s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .contact-link-icon {
+    font-size: 18px;
+    width: 36px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .contact-link-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    display: block;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .robotics-aside {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 32px;
+  }
+
+  .aside-title {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--accent3);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .aside-body {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+
+  .interest-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style: none;
+  }
+
+  .interest-list li {
+    font-size: 13px;
+    color: var(--text);
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .interest-list li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: var(--accent3);
+    font-size: 8px;
+    top: 3px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    position: relative;
+    z-index: 1;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  footer span { color: var(--accent2); }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: none; }
+
+  /* ── CORNER DECORATION ── */
+  .corner-deco {
+    position: absolute;
+    top: 0; right: 0;
+    width: 200px; height: 200px;
+    border-left: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .nav-links { gap: 20px; }
+    #hero { padding: 100px 20px 60px; }
+    .section-wrap { padding: 72px 20px; }
+    .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+    footer { flex-direction: column; text-align: center; }
+  }
+
+  /* ── TYPING CURSOR ── */
+  #typed-text { color: var(--text); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">MS<span>_</span>portfolio.exe</div>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="corner-deco"></div>
+  <p class="hero-tag fade-up">Robotics Software Engineer</p>
+  <h1 class="fade-up" style="transition-delay:0.1s">
+    MOHEET<br>
+    <span class="accent">SHENDARKAR</span>
+  </h1>
+  <div class="hero-role fade-up" style="transition-delay:0.2s">
+    &gt; <span id="typed-text"></span><span class="blink"></span>
+  </div>
+  <p class="hero-bio fade-up" style="transition-delay:0.3s">
+    Full Stack Developer transitioning into Robotics Software Engineering. 
+    I build scalable, data-driven systems — now applying that foundation to 
+    autonomous systems, sensor fusion, and robot software architecture.
+    Based in Mumbai, India.
+  </p>
+  <div class="hero-cta fade-up" style="transition-delay:0.4s">
+    <a class="btn btn-primary" href="#projects">View Projects</a>
+    <a class="btn btn-ghost" href="mailto:moheetshendarkar@gmail.com">Get in Touch</a>
+  </div>
+  <div class="hero-stats fade-up" style="transition-delay:0.5s">
+    <div class="stat-item">
+      <div class="stat-num">800<span>+</span></div>
+      <div class="stat-label">Problems Solved</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1770<span>+</span></div>
+      <div class="stat-label">LeetCode Rating</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">8.2</div>
+      <div class="stat-label">CGPA</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2<span>x</span></div>
+      <div class="stat-label">Hackathon Podiums</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-wrap">
+    <div class="section-header fade-up">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Projects</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- ResumeIQ -->
+      <div class="project-card fade-up">
+        <div class="project-icon">🤖</div>
+        <div class="project-tag-row">
+          <span class="tag highlight">AI/ML</span>
+          <span class="tag">Angular</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">LLM</span>
+        </div>
+        <div class="project-name">ResumeIQ</div>
+        <div class="project-desc">AI-powered resume analysis platform with real-time job match scoring, keyword gap analysis, and actionable feedback powered by LLM APIs.</div>
+        <ul class="project-bullets">
+          <li>PDF ingestion pipeline with text extraction and async LLM processing</li>
+          <li>Interactive dashboards for real-time analysis visualization</li>
+          <li>Rate limiting & robust API design with Angular + FastAPI stack</li>
+        </ul>
+      </div>
+
+      <!-- SpendWise -->
+      <div class="project-card green fade-up" style="transition-delay:0.1s">
+        <div class="project-icon">📊</div>
+        <div class="project-tag-row">
+          <span class="tag green">PWA</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">Angular</span>
+          <span class="tag">PostgreSQL</span>
+        </div>
+        <div class="project-name">SpendWise</div>
+        <div class="project-desc">Full-stack expense tracking and analytics system with budget management, real-time category insights, and offline-first Progressive Web App architecture.</div>
+        <ul class="project-bullets">
+          <li>Offline-first Angular PWA with interactive dashboards</li>
+          <li>Scalable FastAPI backend with aggregation APIs</li>
+          <li>Recurring expense scheduling and data-driven spending insights</li>
+        </ul>
+      </div>
+
+      <!-- Robotics Interest Card -->
+      <div class="project-card orange fade-up" style="transition-delay:0.2s">
+        <div class="project-icon">⚙️</div>
+        <div class="project-tag-row">
+          <span class="tag orange">Robotics</span>
+          <span class="tag">ROS2</span>
+          <span class="tag">Python</span>
+          <span class="tag">In Progress</span>
+        </div>
+        <div class="project-name">Autonomous Systems</div>
+        <div class="project-desc">Exploring ROS2-based robot software development — applying a strong systems programming and API design background to autonomous navigation and sensor integration.</div>
+        <ul class="project-bullets">
+          <li>Sensor fusion and real-time data pipelines (background in async FastAPI)</li>
+          <li>Distributed microservices architecture maps well to ROS2 node design</li>
+          <li>Building toward robotics middleware and perception layer projects</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-wrap">
+    <div class="section-header fade-up">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Skills</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-block fade-up">
+        <div class="skill-block-title">▸ Frontend</div>
+        <div class="skill-pills">
+          <span class="pill">Angular</span>
+          <span class="pill">TypeScript</span>
+          <span class="pill">Angular Material</span>
+          <span class="pill">D3.js</span>
+          <span class="pill">NGX-Charts</span>
+          <span class="pill">HTML/CSS</span>
+          <span class="pill">RxJS</span>
+        </div>
+      </div>
+
+      <div class="skill-block fade-up" style="transition-delay:0.05s">
+        <div class="skill-block-title green">▸ Backend</div>
+        <div class="skill-pills">
+          <span class="pill">Python</span>
+          <span class="pill">FastAPI</span>
+          <span class="pill">Node.js</span>
+          <span class="pill">REST APIs</span>
+          <span class="pill">Async Processing</span>
+          <span class="pill">Microservices</span>
+        </div>
+      </div>
+
+      <div class="skill-block fade-up" style="transition-delay:0.1s">
+        <div class="skill-block-title orange">▸ Databases</div>
+        <div class="skill-pills">
+          <span class="pill">PostgreSQL</span>
+          <span class="pill">SQLModel</span>
+          <span class="pill">SQLAlchemy</span>
+          <span class="pill">MySQL</span>
+        </div>
+      </div>
+
+      <div class="skill-block fade-up" style="transition-delay:0.15s">
+        <div class="skill-block-title">▸ Robotics / Systems</div>
+        <div class="skill-pills">
+          <span class="pill">ROS2 (Learning)</span>
+          <span class="pill">Sensor Fusion</span>
+          <span class="pill">Real-time Pipelines</span>
+          <span class="pill">Distributed Systems</span>
+          <span class="pill">API Design</span>
+        </div>
+      </div>
+
+      <div class="skill-block fade-up" style="transition-delay:0.2s">
+        <div class="skill-block-title green">▸ Algorithms</div>
+        <div class="skill-pills">
+          <span class="pill">Competitive Programming</span>
+          <span class="pill">Data Structures</span>
+          <span class="pill">Dynamic Programming</span>
+          <span class="pill">Graph Theory</span>
+        </div>
+      </div>
+
+      <div class="skill-block fade-up" style="transition-delay:0.25s">
+        <div class="skill-block-title orange">▸ Tools</div>
+        <div class="skill-pills">
+          <span class="pill">Git</span>
+          <span class="pill">Docker</span>
+          <span class="pill">Linux</span>
+          <span class="pill">CI/CD</span>
+          <span class="pill">Postman</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-wrap">
+    <div class="section-header fade-up">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Experience</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item fade-up">
+        <div class="tl-date">Jun 2025 — Present</div>
+        <div class="tl-company">Homeville Group</div>
+        <div class="tl-role">Associate Software Engineer</div>
+        <ul class="tl-points">
+          <li>Designed and implemented API-driven dynamic forms and dashboards with real-time data visualization across platforms.</li>
+          <li>Upgraded Angular apps from v17 to v19, built reusable NZ Table UI components — improving maintainability and reducing development overhead.</li>
+          <li>Contributed to Python-based microservices using FastAPI, developing and integrating REST APIs within a distributed architecture.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item dim fade-up">
+        <div class="tl-date">Jan 2024 — Jul 2024</div>
+        <div class="tl-company">Express Rupya Capital Advisors</div>
+        <div class="tl-role">Full Stack Developer (Internship)</div>
+        <ul class="tl-points">
+          <li>Developed and maintained RESTful APIs for user auth, client management, lender management, and invoice processing with Node.js and MySQL.</li>
+          <li>Built and maintained React frontend components with effective state management and dynamic UI updates.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item dim fade-up">
+        <div class="tl-date">Jul 2021 — May 2025</div>
+        <div class="tl-company">Thadomal Shahani Engineering College</div>
+        <div class="tl-role">B.E. in Information Technology — CGPA 8.2</div>
+        <ul class="tl-points">
+          <li>Mumbai University. Strong foundation in algorithms, data structures, computer architecture, and distributed systems.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-wrap">
+    <div class="section-header fade-up">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Achievements</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="ach-grid">
+      <div class="ach-card fade-up">
+        <div class="ach-icon">🏆</div>
+        <div class="ach-text"><strong>1st Runner-up</strong><br>Crescendo CRCE Hackathon</div>
+      </div>
+      <div class="ach-card fade-up" style="transition-delay:0.05s">
+        <div class="ach-icon">🥉</div>
+        <div class="ach-text"><strong>2nd Runner-up</strong><br>Rubix'24 Hackathon</div>
+      </div>
+      <div class="ach-card fade-up" style="transition-delay:0.1s">
+        <div class="ach-icon">⚡</div>
+        <div class="ach-text"><strong>1770+ LeetCode Rating</strong><br>Top competitive programmer</div>
+      </div>
+      <div class="ach-card fade-up" style="transition-delay:0.15s">
+        <div class="ach-icon">🎯</div>
+        <div class="ach-text"><strong>1372 Codeforces Rating</strong><br>800+ problems solved across platforms</div>
+      </div>
+      <div class="ach-card fade-up" style="transition-delay:0.2s">
+        <div class="ach-icon">🔢</div>
+        <div class="ach-text"><strong>714 AtCoder Rating</strong><br>Active competitive programmer</div>
+      </div>
+      <div class="ach-card fade-up" style="transition-delay:0.25s">
+        <div class="ach-icon">🎓</div>
+        <div class="ach-text"><strong>8.2 CGPA</strong><br>B.E. Information Technology, Mumbai University</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-wrap">
+    <div class="section-header fade-up">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Contact</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="contact-inner">
+      <div>
+        <div class="contact-headline fade-up">
+          Let's build<br><span>something</span><br>together.
+        </div>
+        <p class="contact-sub fade-up">
+          I'm exploring robotics software engineering opportunities — particularly 
+          in robot middleware, autonomous systems, and perception pipelines.
+          Open to collaborations, projects, and conversations.
+        </p>
+        <div class="contact-links fade-up">
+          <a class="contact-link" href="mailto:moheetshendarkar@gmail.com">
+            <span class="contact-link-icon">✉</span>
+            <div>
+              <span class="contact-link-label">Email</span>
+              moheetshendarkar@gmail.com
+            </div>
+          </a>
+          <a class="contact-link" href="https://linkedin.com" target="_blank">
+            <span class="contact-link-icon">in</span>
+            <div>
+              <span class="contact-link-label">LinkedIn</span>
+              Moheet Shendarkar
+            </div>
+          </a>
+          <a class="contact-link" href="https://github.com" target="_blank">
+            <span class="contact-link-icon">⌥</span>
+            <div>
+              <span class="contact-link-label">GitHub</span>
+              @moheetshendarkar
+            </div>
+          </a>
+          <a class="contact-link" href="tel:+919324568572">
+            <span class="contact-link-icon">☏</span>
+            <div>
+              <span class="contact-link-label">Phone</span>
+              +91 93245 68572
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="robotics-aside fade-up">
+        <div class="aside-title">// Why Robotics?</div>
+        <div class="aside-body">
+          My background in distributed systems, async processing, and real-time data pipelines 
+          maps directly to the challenges of robotics software — where low-latency communication, 
+          sensor data orchestration, and fault-tolerant architectures are critical.
+          I'm actively building toward this transition with hands-on learning.
+        </div>
+        <ul class="interest-list">
+          <li>ROS2 node architecture & communication patterns</li>
+          <li>Sensor fusion and real-time perception pipelines</li>
+          <li>Autonomous navigation and path planning algorithms</li>
+          <li>Robot middleware and hardware abstraction layers</li>
+          <li>Applying competitive programming strengths to motion planning</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>© 2025 Moheet Shendarkar — Mumbai, India</div>
+  <div>Built with <span>passion</span> for robotics</div>
+  <div>+91 <span>9324568572</span></div>
+</footer>
+
+<script>
+  // Intersection observer for fade-up
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+  // Typed text effect
+  const phrases = [
+    'building intelligent systems...',
+    'angular + fastapi specialist.',
+    'exploring ROS2 & robotics.',
+    'competitive programmer.',
+    'open to robotics roles.',
+  ];
+  let pi = 0, ci = 0, deleting = false;
+  const el = document.getElementById('typed-text');
+
+  function type() {
+    const current = phrases[pi];
+    if (!deleting) {
+      el.textContent = current.slice(0, ++ci);
+      if (ci === current.length) {
+        deleting = true;
+        setTimeout(type, 1800);
+        return;
+      }
+    } else {
+      el.textContent = current.slice(0, --ci);
+      if (ci === 0) {
+        deleting = false;
+        pi = (pi + 1) % phrases.length;
+      }
+    }
+    setTimeout(type, deleting ? 40 : 65);
+  }
+  type();
+
+  // Trigger hero items immediately
+  document.querySelectorAll('#hero .fade-up').forEach((el, i) => {
+    setTimeout(() => el.classList.add('visible'), i * 120);
+  });
+</script>
+</body>
+</html>

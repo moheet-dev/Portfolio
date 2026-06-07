@@ -49,11 +49,8 @@
     position: fixed;
     inset: 0;
     background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,0.12) 2px,
-      rgba(0,0,0,0.12) 4px
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.12) 2px, rgba(0,0,0,0.12) 4px
     );
     pointer-events: none;
     z-index: 0;
@@ -61,6 +58,7 @@
 
   section, nav, footer { position: relative; z-index: 1; }
 
+  /* ── NAV ── */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -73,215 +71,55 @@
     border-bottom: 1px solid var(--border);
     z-index: 100;
   }
-
-  .nav-logo {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 15px;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-  }
-
+  .nav-logo { font-family: 'Share Tech Mono', monospace; font-size: 15px; color: var(--accent); letter-spacing: 0.1em; }
   .nav-logo span { color: var(--accent2); }
-
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    list-style: none;
-  }
-
-  .nav-links a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
   .nav-links a:hover { color: var(--accent); }
 
-  #hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 120px 48px 80px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .hero-tag {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 12px;
-    color: var(--accent2);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .hero-tag::before {
-    content: '';
-    width: 32px;
-    height: 1px;
-    background: var(--accent2);
-  }
-
-  h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(48px, 8vw, 96px);
-    font-weight: 800;
-    line-height: 0.95;
-    letter-spacing: -0.02em;
-    color: #e8f4ff;
-    margin-bottom: 8px;
-  }
-
+  /* ── HERO ── */
+  #hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 120px 48px 80px; max-width: 1100px; margin: 0 auto; }
+  .hero-tag { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--accent2); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+  .hero-tag::before { content: ''; width: 32px; height: 1px; background: var(--accent2); }
+  h1 { font-family: 'Syne', sans-serif; font-size: clamp(48px, 8vw, 96px); font-weight: 800; line-height: 0.95; letter-spacing: -0.02em; color: #e8f4ff; margin-bottom: 8px; }
   h1 .accent { color: var(--accent); }
-  h1 .dim { color: var(--muted); font-weight: 400; }
-
-  .hero-role {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 16px;
-    color: var(--accent3);
-    letter-spacing: 0.08em;
-    margin: 28px 0 24px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .blink {
-    display: inline-block;
-    width: 10px; height: 18px;
-    background: var(--accent3);
-    animation: blink 1s step-end infinite;
-    vertical-align: middle;
-  }
+  .hero-role { font-family: 'Share Tech Mono', monospace; font-size: 16px; color: var(--accent3); letter-spacing: 0.08em; margin: 28px 0 24px; display: flex; align-items: center; gap: 10px; }
+  .blink { display: inline-block; width: 10px; height: 18px; background: var(--accent3); animation: blink 1s step-end infinite; vertical-align: middle; }
   @keyframes blink { 50% { opacity: 0; } }
-
-  .hero-bio {
-    max-width: 560px;
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.8;
-    margin-bottom: 48px;
-  }
-
-  .hero-cta {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 28px;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: 1px solid;
-    cursor: pointer;
-    transition: all 0.25s;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: var(--bg);
-    border-color: var(--accent);
-  }
+  .hero-bio { max-width: 560px; color: var(--muted); font-size: 14px; line-height: 1.8; margin-bottom: 48px; }
+  .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; font-family: 'Share Tech Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border: 1px solid; cursor: pointer; transition: all 0.25s; }
+  .btn-primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
   .btn-primary:hover { background: transparent; color: var(--accent); }
-
-  .btn-ghost {
-    background: transparent;
-    color: var(--text);
-    border-color: var(--border);
-  }
+  .btn-ghost { background: transparent; color: var(--text); border-color: var(--border); }
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
-
-  .hero-stats {
-    display: flex;
-    gap: 48px;
-    margin-top: 64px;
-    padding-top: 40px;
-    border-top: 1px solid var(--border);
-    flex-wrap: wrap;
-  }
-
+  .hero-stats { display: flex; gap: 48px; margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--border); flex-wrap: wrap; }
   .stat-item { display: flex; flex-direction: column; gap: 4px; }
-  .stat-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 32px;
-    font-weight: 800;
-    color: #e8f4ff;
-    line-height: 1;
-  }
+  .stat-num { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; color: #e8f4ff; line-height: 1; }
   .stat-num span { color: var(--accent); }
-  .stat-label {
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
+  .stat-label { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
 
-  .section-wrap {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 100px 48px;
-  }
+  /* ── SECTION COMMON ── */
+  .section-wrap { max-width: 1100px; margin: 0 auto; padding: 100px 48px; }
+  .section-header { display: flex; align-items: center; gap: 20px; margin-bottom: 64px; }
+  .section-num { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--accent2); letter-spacing: 0.2em; }
+  .section-title { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; color: #e8f4ff; letter-spacing: -0.02em; }
+  .section-line { flex: 1; height: 1px; background: var(--border); }
 
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 64px;
-  }
-
-  .section-num {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 11px;
-    color: var(--accent2);
-    letter-spacing: 0.2em;
-  }
-
-  .section-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 36px;
-    font-weight: 800;
-    color: #e8f4ff;
-    letter-spacing: -0.02em;
-  }
-
-  .section-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
+  /* ── PROJECTS ── */
   #projects { background: var(--bg2); }
-
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 24px;
-  }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
 
   .project-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    padding: 32px;
     position: relative;
     overflow: hidden;
     transition: border-color 0.3s, transform 0.3s;
     cursor: default;
+    display: flex;
+    flex-direction: column;
   }
-
   .project-card::before {
     content: '';
     position: absolute;
@@ -291,375 +129,217 @@
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.35s ease;
+    z-index: 2;
   }
-
   .project-card:hover { border-color: var(--accent); transform: translateY(-4px); }
   .project-card:hover::before { transform: scaleX(1); }
-
   .project-card.green::before { background: var(--accent2); }
   .project-card.green:hover { border-color: var(--accent2); }
   .project-card.orange::before { background: var(--accent3); }
   .project-card.orange:hover { border-color: var(--accent3); }
 
-  .project-icon {
-    width: 48px; height: 48px;
-    border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px;
-    margin-bottom: 24px;
-    background: var(--bg);
+  /* ── VIDEO AREA ── */
+  .project-video-wrap {
+    position: relative;
+    width: 100%;
+    background: #050810;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
   }
 
-  .project-tag-row {
+  /* Collapsed state: shows thumbnail / play button */
+  .video-thumb {
     display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 16px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 28px 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+    min-height: 110px;
   }
+  .video-thumb:hover { background: rgba(0,229,255,0.04); }
+  .project-card.green .video-thumb:hover { background: rgba(57,255,130,0.04); }
+  .project-card.orange .video-thumb:hover { background: rgba(255,107,53,0.04); }
 
-  .tag {
+  .play-btn {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    border: 1.5px solid var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--accent);
+    font-size: 16px;
+    transition: background 0.2s, transform 0.2s;
+    flex-shrink: 0;
+  }
+  .video-thumb:hover .play-btn { background: var(--accent); color: var(--bg); transform: scale(1.08); }
+  .project-card.green .play-btn { border-color: var(--accent2); color: var(--accent2); }
+  .project-card.green .video-thumb:hover .play-btn { background: var(--accent2); color: var(--bg); }
+  .project-card.orange .play-btn { border-color: var(--accent3); color: var(--accent3); }
+  .project-card.orange .video-thumb:hover .play-btn { background: var(--accent3); color: var(--bg); }
+
+  .video-label {
     font-family: 'Share Tech Mono', monospace;
     font-size: 10px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    padding: 3px 8px;
-    border: 1px solid var(--border);
     color: var(--muted);
   }
 
+  /* Expanded state: iframe */
+  .video-player {
+    display: none;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+  }
+  .video-player iframe {
+    width: 100%; height: 100%;
+    border: none;
+    display: block;
+  }
+  .video-close {
+    position: absolute;
+    top: 8px; right: 8px;
+    width: 28px; height: 28px;
+    background: rgba(8,12,16,0.85);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 14px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 10;
+    transition: color 0.2s, border-color 0.2s;
+    font-family: 'Share Tech Mono', monospace;
+  }
+  .video-close:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* No demo state */
+  .no-demo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 22px 16px;
+    min-height: 110px;
+    border-bottom: 1px solid var(--border);
+  }
+  .no-demo-text {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0.5;
+  }
+
+  /* ── CARD BODY ── */
+  .project-body { padding: 28px 28px 0; flex: 1; }
+  .project-icon { width: 40px; height: 40px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 18px; background: var(--bg); }
+  .project-tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .tag { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--border); color: var(--muted); }
   .tag.highlight { border-color: var(--accent); color: var(--accent); }
   .tag.green { border-color: var(--accent2); color: var(--accent2); }
   .tag.orange { border-color: var(--accent3); color: var(--accent3); }
-
-  .project-name {
-    font-family: 'Syne', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: #e8f4ff;
-    margin-bottom: 12px;
-    letter-spacing: -0.01em;
-  }
-
-  .project-desc {
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.7;
-    margin-bottom: 24px;
-  }
-
-  .project-bullets {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .project-bullets li {
-    font-size: 12px;
-    color: var(--text);
-    padding-left: 16px;
-    position: relative;
-  }
-
-  .project-bullets li::before {
-    content: '›';
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-  }
-
+  .project-name { font-family: 'Syne', sans-serif; font-size: 19px; font-weight: 700; color: #e8f4ff; margin-bottom: 10px; letter-spacing: -0.01em; }
+  .project-desc { color: var(--muted); font-size: 13px; line-height: 1.7; margin-bottom: 18px; }
+  .project-bullets { list-style: none; display: flex; flex-direction: column; gap: 7px; margin-bottom: 0; }
+  .project-bullets li { font-size: 12px; color: var(--text); padding-left: 16px; position: relative; }
+  .project-bullets li::before { content: '›'; position: absolute; left: 0; color: var(--accent); }
   .project-card.green .project-bullets li::before { color: var(--accent2); }
   .project-card.orange .project-bullets li::before { color: var(--accent3); }
 
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 2px;
-  }
-
-  .skill-block {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 28px;
-    transition: background 0.2s;
-  }
-  .skill-block:hover { background: #161f2a; }
-
-  .skill-block-title {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 16px;
+  /* ── CARD FOOTER (github link) ── */
+  .project-footer {
+    padding: 16px 28px 20px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: flex-end;
+    margin-top: 20px;
+    border-top: 1px solid var(--border);
   }
-
-  .skill-block-title.green { color: var(--accent2); }
-  .skill-block-title.orange { color: var(--accent3); }
-
-  .skill-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .pill {
-    font-size: 12px;
-    padding: 4px 12px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    color: var(--text);
-    transition: all 0.2s;
-  }
-  .pill:hover { border-color: var(--accent); color: var(--accent); }
-
-  #experience { background: var(--bg2); }
-
-  .timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    border-left: 1px solid var(--border);
-    margin-left: 16px;
-  }
-
-  .timeline-item {
-    padding: 0 0 48px 40px;
-    position: relative;
-  }
-
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -5px;
-    top: 6px;
-    width: 9px; height: 9px;
-    background: var(--accent);
-    border: 2px solid var(--bg2);
-  }
-
-  .timeline-item.dim::before { background: var(--muted); }
-
-  .tl-date {
+  .github-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    text-decoration: none;
     font-family: 'Share Tech Mono', monospace;
     font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: var(--muted);
-    letter-spacing: 0.12em;
-    margin-bottom: 8px;
-  }
-
-  .tl-company {
-    font-family: 'Syne', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: #e8f4ff;
-    margin-bottom: 4px;
-  }
-
-  .tl-role {
-    font-size: 13px;
-    color: var(--accent);
-    margin-bottom: 16px;
-    letter-spacing: 0.05em;
-  }
-
-  .tl-points {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .tl-points li {
-    font-size: 13px;
-    color: var(--muted);
-    padding-left: 18px;
-    position: relative;
-    line-height: 1.6;
-  }
-
-  .tl-points li::before {
-    content: '//';
-    position: absolute;
-    left: 0;
-    color: var(--accent2);
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px;
-    top: 2px;
-  }
-
-  .ach-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
-  }
-
-  .ach-card {
+    padding: 7px 14px;
     border: 1px solid var(--border);
-    padding: 24px;
-    background: var(--surface);
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-    transition: border-color 0.25s;
+    transition: all 0.2s;
   }
-  .ach-card:hover { border-color: var(--accent2); }
+  .github-link:hover { color: var(--accent2); border-color: var(--accent2); }
+  .github-link svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
 
+  /* placeholder link style */
+  .github-link.placeholder { opacity: 0.4; pointer-events: none; }
+
+  /* ── SKILLS ── */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 2px; }
+  .skill-block { background: var(--surface); border: 1px solid var(--border); padding: 28px; transition: background 0.2s; }
+  .skill-block:hover { background: #161f2a; }
+  .skill-block-title { font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .skill-block-title.green { color: var(--accent2); }
+  .skill-block-title.orange { color: var(--accent3); }
+  .skill-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill { font-size: 12px; padding: 4px 12px; background: var(--bg); border: 1px solid var(--border); color: var(--text); transition: all 0.2s; }
+  .pill:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--bg2); }
+  .timeline { display: flex; flex-direction: column; gap: 0; border-left: 1px solid var(--border); margin-left: 16px; }
+  .timeline-item { padding: 0 0 48px 40px; position: relative; }
+  .timeline-item::before { content: ''; position: absolute; left: -5px; top: 6px; width: 9px; height: 9px; background: var(--accent); border: 2px solid var(--bg2); }
+  .timeline-item.dim::before { background: var(--muted); }
+  .tl-date { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.12em; margin-bottom: 8px; }
+  .tl-company { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; color: #e8f4ff; margin-bottom: 4px; }
+  .tl-role { font-size: 13px; color: var(--accent); margin-bottom: 16px; letter-spacing: 0.05em; }
+  .tl-points { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .tl-points li { font-size: 13px; color: var(--muted); padding-left: 18px; position: relative; line-height: 1.6; }
+  .tl-points li::before { content: '//'; position: absolute; left: 0; color: var(--accent2); font-family: 'Share Tech Mono', monospace; font-size: 10px; top: 2px; }
+
+  /* ── ACHIEVEMENTS ── */
+  .ach-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .ach-card { border: 1px solid var(--border); padding: 24px; background: var(--surface); display: flex; gap: 16px; align-items: flex-start; transition: border-color 0.25s; }
+  .ach-card:hover { border-color: var(--accent2); }
   .ach-icon { font-size: 24px; flex-shrink: 0; }
   .ach-text { font-size: 13px; color: var(--text); line-height: 1.6; }
   .ach-text strong { color: #e8f4ff; font-weight: normal; font-family: 'Syne', sans-serif; }
 
+  /* ── CONTACT ── */
   #contact { background: var(--bg2); }
-
-  .contact-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: start;
-  }
-
-  .contact-headline {
-    font-family: 'Syne', sans-serif;
-    font-size: 42px;
-    font-weight: 800;
-    color: #e8f4ff;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    margin-bottom: 20px;
-  }
-
+  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .contact-headline { font-family: 'Syne', sans-serif; font-size: 42px; font-weight: 800; color: #e8f4ff; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px; }
   .contact-headline span { color: var(--accent); }
+  .contact-sub { color: var(--muted); font-size: 13px; line-height: 1.8; margin-bottom: 32px; }
+  .contact-links { display: flex; flex-direction: column; gap: 16px; }
+  .contact-link { display: flex; align-items: center; gap: 16px; color: var(--text); text-decoration: none; font-size: 13px; padding: 16px; border: 1px solid var(--border); background: var(--surface); transition: all 0.25s; }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+  .contact-link-icon { font-size: 18px; width: 36px; text-align: center; flex-shrink: 0; }
+  .contact-link-label { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--muted); display: block; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2px; }
+  .robotics-aside { background: var(--surface); border: 1px solid var(--border); padding: 32px; }
+  .aside-title { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--accent3); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 20px; }
+  .aside-body { font-size: 13px; color: var(--muted); line-height: 1.8; margin-bottom: 24px; }
+  .interest-list { display: flex; flex-direction: column; gap: 12px; list-style: none; }
+  .interest-list li { font-size: 13px; color: var(--text); padding-left: 20px; position: relative; }
+  .interest-list li::before { content: '▶'; position: absolute; left: 0; color: var(--accent3); font-size: 8px; top: 3px; }
 
-  .contact-sub {
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.8;
-    margin-bottom: 32px;
-  }
-
-  .contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    color: var(--text);
-    text-decoration: none;
-    font-size: 13px;
-    padding: 16px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    transition: all 0.25s;
-  }
-
-  .contact-link:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-  .contact-link-icon {
-    font-size: 18px;
-    width: 36px;
-    text-align: center;
-    flex-shrink: 0;
-  }
-
-  .contact-link-label {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    display: block;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 2px;
-  }
-
-  .robotics-aside {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 32px;
-  }
-
-  .aside-title {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 11px;
-    color: var(--accent3);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
-
-  .aside-body {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.8;
-    margin-bottom: 24px;
-  }
-
-  .interest-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    list-style: none;
-  }
-
-  .interest-list li {
-    font-size: 13px;
-    color: var(--text);
-    padding-left: 20px;
-    position: relative;
-  }
-
-  .interest-list li::before {
-    content: '▶';
-    position: absolute;
-    left: 0;
-    color: var(--accent3);
-    font-size: 8px;
-    top: 3px;
-  }
-
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 28px 48px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    position: relative;
-    z-index: 1;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
+  /* ── FOOTER ── */
+  footer { border-top: 1px solid var(--border); padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--muted); position: relative; z-index: 1; flex-wrap: wrap; gap: 8px; }
   footer span { color: var(--accent2); }
 
-  .fade-up {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.65s ease, transform 0.65s ease;
-  }
+  /* ── ANIMATIONS ── */
+  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
   .fade-up.visible { opacity: 1; transform: none; }
 
-  .corner-deco {
-    position: absolute;
-    top: 0; right: 0;
-    width: 200px; height: 200px;
-    border-left: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    pointer-events: none;
-    opacity: 0.4;
-  }
+  .corner-deco { position: absolute; top: 0; right: 0; width: 200px; height: 200px; border-left: 1px solid var(--border); border-bottom: 1px solid var(--border); pointer-events: none; opacity: 0.4; }
 
+  /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     nav { padding: 14px 20px; }
     .nav-links { gap: 20px; }
@@ -690,15 +370,14 @@
   <div class="corner-deco"></div>
   <p class="hero-tag fade-up">Robotics Software Engineer (Transitioning)</p>
   <h1 class="fade-up" style="transition-delay:0.1s">
-    MOHEET<br>
-    <span class="accent">SHENDARKAR</span>
+    MOHEET<br><span class="accent">SHENDARKAR</span>
   </h1>
   <div class="hero-role fade-up" style="transition-delay:0.2s">
     &gt; <span id="typed-text"></span><span class="blink"></span>
   </div>
   <p class="hero-bio fade-up" style="transition-delay:0.3s">
-    Software Engineer transitioning into Robotics Software Engineering. 
-    I build scalable, data-driven systems — now applying that foundation to 
+    Software Engineer transitioning into Robotics Software Engineering.
+    I build scalable, data-driven systems — now applying that foundation to
     autonomous systems, sensor fusion, and robot software architecture.
     Based in Mumbai, India.
   </p>
@@ -707,22 +386,10 @@
     <a class="btn btn-ghost" href="mailto:moheetshendarkar@gmail.com">Get in Touch</a>
   </div>
   <div class="hero-stats fade-up" style="transition-delay:0.5s">
-    <div class="stat-item">
-      <div class="stat-num">800<span>+</span></div>
-      <div class="stat-label">Problems Solved</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">1770<span>+</span></div>
-      <div class="stat-label">LeetCode Rating</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">8.2</div>
-      <div class="stat-label">CGPA</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">2<span>x</span></div>
-      <div class="stat-label">Hackathon Podiums</div>
-    </div>
+    <div class="stat-item"><div class="stat-num">800<span>+</span></div><div class="stat-label">Problems Solved</div></div>
+    <div class="stat-item"><div class="stat-num">1770<span>+</span></div><div class="stat-label">LeetCode Rating</div></div>
+    <div class="stat-item"><div class="stat-num">8.2</div><div class="stat-label">CGPA</div></div>
+    <div class="stat-item"><div class="stat-num">2<span>x</span></div><div class="stat-label">Hackathon Podiums</div></div>
   </div>
 </section>
 
@@ -737,82 +404,173 @@
 
     <div class="projects-grid">
 
-      <!-- RoboMission — Autonomous Nav -->
-      <div class="project-card fade-up" style="transition-delay:0.3s">
-        <div class="project-icon">🧭</div>
-        <div class="project-tag-row">
-          <span class="tag highlight">Robotics</span>
-          <span class="tag">ROS2</span>
-          <span class="tag">Python</span>
-          <span class="tag">Obstacle Avoidance</span>
+      <!-- ① RoboMission — Autonomous Nav -->
+      <div class="project-card fade-up" style="transition-delay:0.1s">
+        <!-- VIDEO: replace the src with your Google Drive /preview link -->
+        <div class="project-video-wrap">
+          <div class="video-thumb" onclick="openVideo(this)">
+            <div class="play-btn">▶</div>
+            <span class="video-label">Watch Demo</span>
+          </div>
+          <div class="video-player">
+            <button class="video-close" onclick="closeVideo(this)">✕</button>
+            <!-- REPLACE src below with your Drive /preview link -->
+            <iframe
+              src="https://drive.google.com/file/d/1oJuTH92qPly5E2iYlW0mTkpD4ivGRoQp/preview"
+              allow="autoplay"
+              allowfullscreen>
+            </iframe>
+          </div>
         </div>
-        <div class="project-name">RoboMission — Autonomous Nav</div>
-        <div class="project-desc">ROS2 Python node implementing a custom <code style="font-size:11px;color:var(--accent)">MoveRobot</code> service that autonomously navigates a TurtleBot3 to target XY coordinates with real-time obstacle detection via LiDAR.</div>
-        <ul class="project-bullets">
-          <li>Custom <code style="font-size:11px;color:var(--accent)">turtlebot_interfaces/MoveRobot</code> service — <code style="font-size:11px;color:var(--accent)">float64 x/y → bool success</code></li>
-          <li>Rotate-then-drive strategy using <code style="font-size:11px;color:var(--accent)">atan2</code> heading and yaw from quaternion odometry</li>
-          <li>LiDAR scan listener on <code style="font-size:11px;color:var(--accent)">/scan</code> halts motion if front distance &lt; 0.4 m</li>
-          <li>Concurrent callbacks via <code style="font-size:11px;color:var(--accent)">MultiThreadedExecutor</code> + <code style="font-size:11px;color:var(--accent)">ReentrantCallbackGroup</code> — no spin deadlocks</li>
-          <li>Thread-safe odom reads using <code style="font-size:11px;color:var(--accent)">threading.Lock</code> across executor threads</li>
-        </ul>
+        <div class="project-body">
+          <div class="project-icon">🧭</div>
+          <div class="project-tag-row">
+            <span class="tag highlight">Robotics</span>
+            <span class="tag">ROS2</span>
+            <span class="tag">Python</span>
+            <span class="tag">Obstacle Avoidance</span>
+          </div>
+          <div class="project-name">RoboMission — Autonomous Nav</div>
+          <div class="project-desc">ROS2 Python node implementing a custom <code style="font-size:11px;color:var(--accent)">MoveRobot</code> service that autonomously navigates a TurtleBot3 to target XY coordinates with real-time obstacle detection via LiDAR.</div>
+          <ul class="project-bullets">
+            <li>Custom <code style="font-size:11px;color:var(--accent)">turtlebot_interfaces/MoveRobot</code> service — <code style="font-size:11px;color:var(--accent)">float64 x/y → bool success</code></li>
+            <li>Rotate-then-drive strategy using <code style="font-size:11px;color:var(--accent)">atan2</code> heading and yaw from quaternion odometry</li>
+            <li>LiDAR scan listener on <code style="font-size:11px;color:var(--accent)">/scan</code> halts motion if front distance &lt; 0.4 m</li>
+            <li>Concurrent callbacks via <code style="font-size:11px;color:var(--accent)">MultiThreadedExecutor</code> + <code style="font-size:11px;color:var(--accent)">ReentrantCallbackGroup</code></li>
+            <li>Thread-safe odom reads using <code style="font-size:11px;color:var(--accent)">threading.Lock</code> across executor threads</li>
+          </ul>
+        </div>
+        <div class="project-footer">
+          <!-- REPLACE href with your GitHub repo URL -->
+          <a class="github-link" href="https://github.com/moheet-dev/ROS2/tree/main/robo-mission" target="_blank">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            View Code
+          </a>
+        </div>
       </div>
 
-      <!-- TurtleBot Control Station -->
+      <!-- ② TurtleBot Control Station -->
       <div class="project-card orange fade-up" style="transition-delay:0.2s">
-        <div class="project-icon">🎥</div>
-        <div class="project-tag-row">
-          <span class="tag orange">Robotics</span>
-          <span class="tag">ROS2</span>
-          <span class="tag">WebSockets</span>
-          <span class="tag">rosbridge</span>
+        <div class="project-video-wrap">
+          <div class="video-thumb" onclick="openVideo(this)">
+            <div class="play-btn">▶</div>
+            <span class="video-label">Watch Demo</span>
+          </div>
+          <div class="video-player">
+            <button class="video-close" onclick="closeVideo(this)">✕</button>
+            <iframe
+              src="https://drive.google.com/file/d/1AnCkyGAuRs94IqB0RfC9Vr8qIDv_nDjA/preview"
+              allow="autoplay"
+              allowfullscreen>
+            </iframe>
+          </div>
         </div>
-        <div class="project-name">TurtleBot Control Station</div>
-        <div class="project-desc">Browser-based robot control dashboard with live camera streaming, real-time odometry telemetry, and coordinate-based autonomous navigation — all over WebSockets via rosbridge.</div>
-        <ul class="project-bullets">
-          <li>Real-time camera feed via <code style="font-size:11px;color:var(--accent3)">/camera/image_raw</code> over web_video_server HTTP stream</li>
-          <li>Live X/Y odometry HUD overlay sourced from <code style="font-size:11px;color:var(--accent3)">/odom</code> nav_msgs/Odometry</li>
-          <li>Calls custom <code style="font-size:11px;color:var(--accent3)">MoveRobot</code> service — returns <code style="font-size:11px;color:var(--accent3)">success/message</code> on arrival</li>
-          <li>Connection state indicator, stream auto-retry, and navigation status pills</li>
-        </ul>
+        <div class="project-body">
+          <div class="project-icon">🎥</div>
+          <div class="project-tag-row">
+            <span class="tag orange">Robotics</span>
+            <span class="tag">ROS2</span>
+            <span class="tag">WebSockets</span>
+            <span class="tag">rosbridge</span>
+          </div>
+          <div class="project-name">TurtleBot Control Station</div>
+          <div class="project-desc">Browser-based robot control dashboard with live camera streaming, real-time odometry telemetry, and coordinate-based autonomous navigation — all over WebSockets via rosbridge.</div>
+          <ul class="project-bullets">
+            <li>Real-time camera feed via <code style="font-size:11px;color:var(--accent3)">/camera/image_raw</code> over web_video_server HTTP stream</li>
+            <li>Live X/Y odometry HUD overlay sourced from <code style="font-size:11px;color:var(--accent3)">/odom</code> nav_msgs/Odometry</li>
+            <li>Calls custom <code style="font-size:11px;color:var(--accent3)">MoveRobot</code> service — returns <code style="font-size:11px;color:var(--accent3)">success/message</code> on arrival</li>
+            <li>Connection state indicator, stream auto-retry, and navigation status pills</li>
+          </ul>
+        </div>
+        <div class="project-footer">
+          <a class="github-link" href="https://github.com/moheet-dev/ROS2/blob/main/turtlebot-simulator/index.html" target="_blank">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            View Code
+          </a>
+        </div>
       </div>
 
-      <!-- Web-Based Turtlesim Teleoperation Dashboard -->
-      <div class="project-card fade-up">
-        <div class="project-icon">🤖</div>
-        <div class="project-tag-row">
-          <span class="tag highlight">ROS2</span>
-          <span class="tag">HTML/CSS/JavaScript</span>
-          <span class="tag">WebSockets</span>
-          <span class="tag">ROSLIBJS</span>
+      <!-- ③ Turtlesim Teleoperation Dashboard -->
+      <div class="project-card fade-up" style="transition-delay:0.3s">
+        <div class="project-video-wrap">
+          <div class="video-thumb" onclick="openVideo(this)">
+            <div class="play-btn">▶</div>
+            <span class="video-label">Watch Demo</span>
+          </div>
+          <div class="video-player">
+            <button class="video-close" onclick="closeVideo(this)">✕</button>
+            <iframe
+              src="https://drive.google.com/file/d/1mmISizIUAsI8ypTI74BdN7JbHqxNcEo_/preview"
+              allow="autoplay"
+              allowfullscreen>
+            </iframe>
+          </div>
         </div>
-        <div class="project-name">Web-Based Turtlesim Teleoperation Dashboard</div>
-        <div class="project-desc">Browser-based teleoperation dashboard to remotely control a simulated robot in ROS2 using real-time command publishing and telemetry monitoring. Integrates ROS topics and services through WebSockets.</div>
-        <ul class="project-bullets">
-          <li>Remotely controls turtlesim movement using browser buttons by publishing velocity commands to ROS2 topics.</li>
-          <li>Displays the turtle's real-time X and Y coordinates by subscribing to pose updates.</li>
-          <li>Supports simulator reset functionality through ROS2 service calls directly from the web interface.</li>
-        </ul>
+        <div class="project-body">
+          <div class="project-icon">🤖</div>
+          <div class="project-tag-row">
+            <span class="tag highlight">ROS2</span>
+            <span class="tag">HTML/CSS/JavaScript</span>
+            <span class="tag">WebSockets</span>
+            <span class="tag">ROSLIBJS</span>
+          </div>
+          <div class="project-name">Web-Based Turtlesim Teleoperation Dashboard</div>
+          <div class="project-desc">Browser-based teleoperation dashboard to remotely control a simulated robot in ROS2 using real-time command publishing and telemetry monitoring. Integrates ROS topics and services through WebSockets.</div>
+          <ul class="project-bullets">
+            <li>Remotely controls turtlesim movement using browser buttons by publishing velocity commands to ROS2 topics.</li>
+            <li>Displays the turtle's real-time X and Y coordinates by subscribing to pose updates.</li>
+            <li>Supports simulator reset functionality through ROS2 service calls directly from the web interface.</li>
+          </ul>
+        </div>
+        <div class="project-footer">
+          <a class="github-link" href="https://github.com/moheet-dev/ROS2/blob/main/turtlesim-simulator/index.html" target="_blank">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            View Code
+          </a>
+        </div>
       </div>
 
-      <!-- TCP Chat Server — NEW -->
+      <!-- ④ TCP Chat — Multi-threaded Server/Client -->
       <div class="project-card green fade-up" style="transition-delay:0.15s">
-        <div class="project-icon">💬</div>
-        <div class="project-tag-row">
-          <span class="tag green">Systems / C</span>
-          <span class="tag">POSIX Sockets</span>
-          <span class="tag">pthreads</span>
-          <span class="tag">Networking</span>
+        <div class="project-video-wrap">
+          <div class="video-thumb" onclick="openVideo(this)">
+            <div class="play-btn">▶</div>
+            <span class="video-label">Watch Demo</span>
+          </div>
+          <div class="video-player">
+            <button class="video-close" onclick="closeVideo(this)">✕</button>
+            <iframe
+              src="https://drive.google.com/file/d/1Z6kjYyBZDlzKqSZAPggwDixp2yUo3KEb/preview"
+              allow="autoplay"
+              allowfullscreen>
+            </iframe>
+          </div>
         </div>
-        <div class="project-name">TCP Chat — Multi-threaded Server/Client</div>
-        <div class="project-desc">Low-level multi-threaded TCP chat system in C with dual IPv4/IPv6 stack support. One pthread per connected client, mutex-guarded shared state, and ANSI-colored broadcast messaging — demonstrating the real-time networking fundamentals that underpin robot communication.</div>
-        <ul class="project-bullets">
-          <li>Dual-stack via <code style="font-size:11px;color:var(--accent2)">getaddrinfo(AF_UNSPEC)</code> — handles both IPv4 and IPv6 clients transparently</li>
-          <li>One <code style="font-size:11px;color:var(--accent2)">pthread</code> per client with <code style="font-size:11px;color:var(--accent2)">pthread_detach</code>; swap-with-last O(1) removal from client table</li>
-          <li><code style="font-size:11px;color:var(--accent2)">pthread_mutex_t</code>-guarded shared client registry — race-free broadcast to all peers</li>
-          <li>Client identifies itself via first message; server echoes formatted <code style="font-size:11px;color:var(--accent2)">[Name]: msg</code> with per-client ANSI color</li>
-          <li>Separate send/receive threads on the client side; clean disconnect on EOF (Ctrl-D)</li>
-          <li><code style="font-size:11px;color:var(--accent2)">SO_REUSEADDR</code> for fast server restart; supports up to 100 concurrent clients</li>
-        </ul>
+        <div class="project-body">
+          <div class="project-icon">💬</div>
+          <div class="project-tag-row">
+            <span class="tag green">Systems / C</span>
+            <span class="tag">POSIX Sockets</span>
+            <span class="tag">pthreads</span>
+            <span class="tag">Networking</span>
+          </div>
+          <div class="project-name">TCP Chat — Multi-threaded Server/Client</div>
+          <div class="project-desc">Low-level multi-threaded TCP chat system in C with dual IPv4/IPv6 stack support. One pthread per connected client, mutex-guarded shared state, and ANSI-colored broadcast messaging — demonstrating real-time networking fundamentals that underpin robot communication.</div>
+          <ul class="project-bullets">
+            <li>Dual-stack via <code style="font-size:11px;color:var(--accent2)">getaddrinfo(AF_UNSPEC)</code> — handles both IPv4 and IPv6 transparently</li>
+            <li>One <code style="font-size:11px;color:var(--accent2)">pthread</code> per client with <code style="font-size:11px;color:var(--accent2)">pthread_detach</code>; swap-with-last O(1) removal from client table</li>
+            <li><code style="font-size:11px;color:var(--accent2)">pthread_mutex_t</code>-guarded client registry — race-free broadcast to all peers</li>
+            <li>Per-client ANSI color assignment; formatted <code style="font-size:11px;color:var(--accent2)">[Name]: msg</code> echoed to all others</li>
+            <li>Separate send/receive threads on the client; clean disconnect on EOF (Ctrl-D)</li>
+            <li><code style="font-size:11px;color:var(--accent2)">SO_REUSEADDR</code> for fast restart; supports up to 100 concurrent clients</li>
+          </ul>
+        </div>
+        <div class="project-footer">
+          <a class="github-link" href="https://github.com/moheet-dev/REPLACE_REPO" target="_blank">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            View Code
+          </a>
+        </div>
       </div>
 
     </div>
@@ -827,88 +585,47 @@
       <h2 class="section-title">Skills</h2>
       <div class="section-line"></div>
     </div>
-
     <div class="skills-grid">
       <div class="skill-block fade-up">
         <div class="skill-block-title">▸ Frontend</div>
         <div class="skill-pills">
-          <span class="pill">Angular</span>
-          <span class="pill">TypeScript</span>
-          <span class="pill">Angular Material</span>
-          <span class="pill">D3.js</span>
-          <span class="pill">NGX-Charts</span>
-          <span class="pill">HTML/CSS</span>
-          <span class="pill">RxJS</span>
+          <span class="pill">Angular</span><span class="pill">TypeScript</span><span class="pill">Angular Material</span><span class="pill">D3.js</span><span class="pill">NGX-Charts</span><span class="pill">HTML/CSS</span><span class="pill">RxJS</span>
         </div>
       </div>
-
       <div class="skill-block fade-up" style="transition-delay:0.1s">
         <div class="skill-block-title orange">▸ Databases</div>
         <div class="skill-pills">
-          <span class="pill">PostgreSQL</span>
-          <span class="pill">MySQL</span>
-          <span class="pill">SQLAlchemy</span>
+          <span class="pill">PostgreSQL</span><span class="pill">MySQL</span><span class="pill">SQLAlchemy</span>
         </div>
       </div>
-
       <div class="skill-block fade-up" style="transition-delay:0.15s">
         <div class="skill-block-title">▸ Robotics / ROS2</div>
         <div class="skill-pills">
-          <span class="pill">ROS2 Humble</span>
-          <span class="pill">rosbridge_suite</span>
-          <span class="pill">ROSLIB.js</span>
-          <span class="pill">Custom Interfaces</span>
-          <span class="pill">Nav / Odometry</span>
-          <span class="pill">LiDAR / LaserScan</span>
-          <span class="pill">MultiThreadedExecutor</span>
-          <span class="pill">tf_transformations</span>
+          <span class="pill">ROS2 Humble</span><span class="pill">rosbridge_suite</span><span class="pill">ROSLIB.js</span><span class="pill">Custom Interfaces</span><span class="pill">Nav / Odometry</span><span class="pill">LiDAR / LaserScan</span><span class="pill">MultiThreadedExecutor</span><span class="pill">tf_transformations</span>
         </div>
       </div>
-
       <div class="skill-block fade-up" style="transition-delay:0.2s">
         <div class="skill-block-title green">▸ Algorithms</div>
         <div class="skill-pills">
-          <span class="pill">Competitive Programming</span>
-          <span class="pill">Data Structures</span>
-          <span class="pill">Dynamic Programming</span>
-          <span class="pill">Graph Theory</span>
+          <span class="pill">Competitive Programming</span><span class="pill">Data Structures</span><span class="pill">Dynamic Programming</span><span class="pill">Graph Theory</span>
         </div>
       </div>
-
       <div class="skill-block fade-up" style="transition-delay:0.05s">
         <div class="skill-block-title green">▸ Backend</div>
         <div class="skill-pills">
-          <span class="pill">Python</span>
-          <span class="pill">FastAPI</span>
-          <span class="pill">Node.js</span>
-          <span class="pill">REST APIs</span>
-          <span class="pill">Async Processing</span>
-          <span class="pill">Microservices</span>
+          <span class="pill">Python</span><span class="pill">FastAPI</span><span class="pill">Node.js</span><span class="pill">REST APIs</span><span class="pill">Async Processing</span><span class="pill">Microservices</span>
         </div>
       </div>
-
       <div class="skill-block fade-up" style="transition-delay:0.22s">
         <div class="skill-block-title green">▸ Systems / C</div>
         <div class="skill-pills">
-          <span class="pill">C (POSIX)</span>
-          <span class="pill">pthreads</span>
-          <span class="pill">TCP/IP Sockets</span>
-          <span class="pill">Mutex / Concurrency</span>
-          <span class="pill">IPv4 / IPv6</span>
-          <span class="pill">getaddrinfo</span>
+          <span class="pill">C (POSIX)</span><span class="pill">pthreads</span><span class="pill">TCP/IP Sockets</span><span class="pill">Mutex / Concurrency</span><span class="pill">IPv4 / IPv6</span><span class="pill">getaddrinfo</span>
         </div>
       </div>
-
       <div class="skill-block fade-up" style="transition-delay:0.25s">
         <div class="skill-block-title orange">▸ Tools</div>
         <div class="skill-pills">
-          <span class="pill">Git</span>
-          <span class="pill">Docker</span>
-          <span class="pill">Linux / WSL2</span>
-          <span class="pill">CI/CD</span>
-          <span class="pill">Postman</span>
-          <span class="pill">Gazebo</span>
-          <span class="pill">GCC</span>
+          <span class="pill">Git</span><span class="pill">Docker</span><span class="pill">Linux / WSL2</span><span class="pill">CI/CD</span><span class="pill">Postman</span><span class="pill">Gazebo</span><span class="pill">GCC</span>
         </div>
       </div>
     </div>
@@ -923,7 +640,6 @@
       <h2 class="section-title">Experience</h2>
       <div class="section-line"></div>
     </div>
-
     <div class="timeline">
       <div class="timeline-item fade-up">
         <div class="tl-date">Jun 2025 — Present</div>
@@ -935,7 +651,6 @@
           <li>Contributed to Python-based microservices using FastAPI, developing and integrating REST APIs within a distributed architecture.</li>
         </ul>
       </div>
-
       <div class="timeline-item dim fade-up">
         <div class="tl-date">Jan 2024 — Jul 2024</div>
         <div class="tl-company">Express Rupya Capital Advisors</div>
@@ -945,7 +660,6 @@
           <li>Built and maintained React frontend components with effective state management and dynamic UI updates.</li>
         </ul>
       </div>
-
       <div class="timeline-item dim fade-up">
         <div class="tl-date">Jul 2021 — May 2025</div>
         <div class="tl-company">Thadomal Shahani Engineering College</div>
@@ -966,20 +680,10 @@
       <h2 class="section-title">Achievements</h2>
       <div class="section-line"></div>
     </div>
-
     <div class="ach-grid">
-      <div class="ach-card fade-up">
-        <div class="ach-icon">🏆</div>
-        <div class="ach-text"><strong>1st Runner-up</strong><br>Crescendo CRCE Hackathon</div>
-      </div>
-      <div class="ach-card fade-up" style="transition-delay:0.05s">
-        <div class="ach-icon">🥉</div>
-        <div class="ach-text"><strong>2nd Runner-up</strong><br>Rubix'24 Hackathon</div>
-      </div>
-      <div class="ach-card fade-up" style="transition-delay:0.25s">
-        <div class="ach-icon">🎓</div>
-        <div class="ach-text"><strong>8.2 CGPA</strong><br>B.E. Information Technology, Mumbai University</div>
-      </div>
+      <div class="ach-card fade-up"><div class="ach-icon">🏆</div><div class="ach-text"><strong>1st Runner-up</strong><br>Crescendo CRCE Hackathon</div></div>
+      <div class="ach-card fade-up" style="transition-delay:0.05s"><div class="ach-icon">🥉</div><div class="ach-text"><strong>2nd Runner-up</strong><br>Rubix'24 Hackathon</div></div>
+      <div class="ach-card fade-up" style="transition-delay:0.25s"><div class="ach-icon">🎓</div><div class="ach-text"><strong>8.2 CGPA</strong><br>B.E. Information Technology, Mumbai University</div></div>
     </div>
   </div>
 </section>
@@ -992,58 +696,20 @@
       <h2 class="section-title">Contact</h2>
       <div class="section-line"></div>
     </div>
-
     <div class="contact-inner">
       <div>
-        <div class="contact-headline fade-up">
-          Let's build<br><span>something</span><br>together.
-        </div>
-        <p class="contact-sub fade-up">
-          I'm exploring robotics software engineering opportunities — particularly
-          in robot control systems, teleoperation, robot middleware, and autonomous systems.
-          Open to collaborations, projects, and conversations.
-        </p>
+        <div class="contact-headline fade-up">Let's build<br><span>something</span><br>together.</div>
+        <p class="contact-sub fade-up">I'm exploring robotics software engineering opportunities — particularly in robot control systems, teleoperation, robot middleware, and autonomous systems. Open to collaborations, projects, and conversations.</p>
         <div class="contact-links fade-up">
-          <a class="contact-link" href="mailto:moheetshendarkar@gmail.com">
-            <span class="contact-link-icon">✉</span>
-            <div>
-              <span class="contact-link-label">Email</span>
-              moheetshendarkar@gmail.com
-            </div>
-          </a>
-          <a class="contact-link" href="https://www.linkedin.com/in/moheet-shendarkar-636808222" target="_blank">
-            <span class="contact-link-icon">in</span>
-            <div>
-              <span class="contact-link-label">LinkedIn</span>
-              Moheet Shendarkar
-            </div>
-          </a>
-          <a class="contact-link" href="https://github.com/moheet-dev" target="_blank">
-            <span class="contact-link-icon">⌥</span>
-            <div>
-              <span class="contact-link-label">GitHub</span>
-              @moheet-dev
-            </div>
-          </a>
-          <a class="contact-link" href="tel:+919324568572">
-            <span class="contact-link-icon">☏</span>
-            <div>
-              <span class="contact-link-label">Phone</span>
-              +91 93245 68572
-            </div>
-          </a>
+          <a class="contact-link" href="mailto:moheetshendarkar@gmail.com"><span class="contact-link-icon">✉</span><div><span class="contact-link-label">Email</span>moheetshendarkar@gmail.com</div></a>
+          <a class="contact-link" href="https://www.linkedin.com/in/moheet-shendarkar-636808222" target="_blank"><span class="contact-link-icon">in</span><div><span class="contact-link-label">LinkedIn</span>Moheet Shendarkar</div></a>
+          <a class="contact-link" href="https://github.com/moheet-dev" target="_blank"><span class="contact-link-icon">⌥</span><div><span class="contact-link-label">GitHub</span>@moheet-dev</div></a>
+          <a class="contact-link" href="tel:+919324568572"><span class="contact-link-icon">☏</span><div><span class="contact-link-label">Phone</span>+91 93245 68572</div></a>
         </div>
       </div>
-
       <div class="robotics-aside fade-up">
         <div class="aside-title">// Why Robotics?</div>
-        <div class="aside-body">
-          I'm interested in robotics software engineering because it combines
-          real-time systems, networking, and human-machine interaction to control
-          physical systems. I'm particularly drawn to teleoperation, remote robot
-          control, and reliable robot communication — building software that enables
-          humans to safely monitor, operate, and supervise robots.
-        </div>
+        <div class="aside-body">I'm interested in robotics software engineering because it combines real-time systems, networking, and human-machine interaction to control physical systems. I'm particularly drawn to teleoperation, remote robot control, and reliable robot communication — building software that enables humans to safely monitor, operate, and supervise robots.</div>
         <ul class="interest-list">
           <li>ROS2 node architecture & communication patterns</li>
           <li>Teleoperation and remote robot control systems</li>
@@ -1064,14 +730,28 @@
 </footer>
 
 <script>
+  /* ── Intersection observer ── */
   const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) e.target.classList.add('visible');
-    });
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
-
   document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 
+  /* ── Video open/close ── */
+  function openVideo(thumbEl) {
+    const wrap = thumbEl.closest('.project-video-wrap');
+    thumbEl.style.display = 'none';
+    wrap.querySelector('.video-player').style.display = 'block';
+  }
+  function closeVideo(closeBtn) {
+    const wrap = closeBtn.closest('.project-video-wrap');
+    // Pause the iframe by reloading its src
+    const iframe = wrap.querySelector('iframe');
+    iframe.src = iframe.src;
+    wrap.querySelector('.video-player').style.display = 'none';
+    wrap.querySelector('.video-thumb').style.display = 'flex';
+  }
+
+  /* ── Typed text ── */
   const phrases = [
     'building autonomous systems...',
     'ROS2 developer.',
@@ -1081,23 +761,15 @@
     'open to robotics roles.',
   ];
   let pi = 0, ci = 0, deleting = false;
-  const el = document.getElementById('typed-text');
-
+  const typedEl = document.getElementById('typed-text');
   function type() {
     const current = phrases[pi];
     if (!deleting) {
-      el.textContent = current.slice(0, ++ci);
-      if (ci === current.length) {
-        deleting = true;
-        setTimeout(type, 1800);
-        return;
-      }
+      typedEl.textContent = current.slice(0, ++ci);
+      if (ci === current.length) { deleting = true; setTimeout(type, 1800); return; }
     } else {
-      el.textContent = current.slice(0, --ci);
-      if (ci === 0) {
-        deleting = false;
-        pi = (pi + 1) % phrases.length;
-      }
+      typedEl.textContent = current.slice(0, --ci);
+      if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
     }
     setTimeout(type, deleting ? 40 : 65);
   }

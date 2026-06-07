@@ -752,6 +752,59 @@
 
     <div class="projects-grid">
 
+    <!-- TurtleBot Control Station -->
+      <div class="project-card orange fade-up" style="transition-delay:0.2s">
+        <div class="project-icon">🎥</div>
+        <div class="project-tag-row">
+          <span class="tag orange">Robotics</span>
+          <span class="tag">ROS2</span>
+          <span class="tag">WebSockets</span>
+          <span class="tag">rosbridge</span>
+        </div>
+        <div class="project-name">TurtleBot Control Station</div>
+        <div class="project-desc">Browser-based robot control dashboard with live camera streaming, real-time odometry telemetry, and coordinate-based autonomous navigation — all over WebSockets via rosbridge.</div>
+        <ul class="project-bullets">
+          <li>Real-time camera feed via <code style="font-size:11px;color:var(--accent3)">/camera/image_raw</code> over web_video_server HTTP stream</li>
+          <li>Live X/Y odometry HUD overlay sourced from <code style="font-size:11px;color:var(--accent3)">/odom</code> nav_msgs/Odometry</li>
+          <li>Calls custom <code style="font-size:11px;color:var(--accent3)">MoveRobot</code> service — returns <code style="font-size:11px;color:var(--accent3)">success/message</code> on arrival</li>
+          <li>Connection state indicator, stream auto-retry, and navigation status pills</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-chip">HTML/CSS/JS</span>
+          <span class="stack-chip">ROSLIB.js</span>
+          <span class="stack-chip">rosbridge_suite</span>
+          <span class="stack-chip">web_video_server</span>
+        </div>
+      </div>
+
+    <!-- RoboMission — Autonomous Nav -->
+      <div class="project-card fade-up" style="transition-delay:0.3s">
+        <div class="project-icon">🧭</div>
+        <div class="project-tag-row">
+          <span class="tag highlight">Robotics</span>
+          <span class="tag">ROS2</span>
+          <span class="tag">Python</span>
+          <span class="tag">Obstacle Avoidance</span>
+        </div>
+        <div class="project-name">RoboMission — Autonomous Nav</div>
+        <div class="project-desc">ROS2 Python node implementing a custom <code style="font-size:11px;color:var(--accent)">MoveRobot</code> service that autonomously navigates a TurtleBot3 to target XY coordinates with real-time obstacle detection via LiDAR.</div>
+        <ul class="project-bullets">
+          <li>Custom <code style="font-size:11px;color:var(--accent)">turtlebot_interfaces/MoveRobot</code> service — <code style="font-size:11px;color:var(--accent)">float64 x/y → bool success</code></li>
+          <li>Rotate-then-drive strategy using <code style="font-size:11px;color:var(--accent)">atan2</code> heading and yaw from quaternion odometry</li>
+          <li>LiDAR scan listener on <code style="font-size:11px;color:var(--accent)">/scan</code> halts motion if front distance &lt; 0.4 m</li>
+          <li>Concurrent callbacks via <code style="font-size:11px;color:var(--accent)">MultiThreadedExecutor</code> + <code style="font-size:11px;color:var(--accent)">ReentrantCallbackGroup</code> — no spin deadlocks</li>
+          <li>Thread-safe odom reads using <code style="font-size:11px;color:var(--accent)">threading.Lock</code> across executor threads</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-chip">ROS2 Humble</span>
+          <span class="stack-chip">Python</span>
+          <span class="stack-chip">nav_msgs</span>
+          <span class="stack-chip">sensor_msgs</span>
+          <span class="stack-chip">tf_transformations</span>
+          <span class="stack-chip">TurtleBot3</span>
+        </div>
+      </div>
+
       <div class="project-card fade-up">
         <div class="project-icon">🤖</div>
         <div class="project-tag-row">
@@ -807,13 +860,16 @@
       </div>
 
       <div class="skill-block fade-up" style="transition-delay:0.15s">
-        <div class="skill-block-title">▸ Robotics / Systems</div>
+        <div class="skill-block-title">▸ Robotics / ROS2</div>
         <div class="skill-pills">
-          <span class="pill">ROS2</span>
-          <span class="pill">Sensor Fusion</span>
-          <span class="pill">Real-time Pipelines</span>
-          <span class="pill">Distributed Systems</span>
-          <span class="pill">API Design</span>
+          <span class="pill">ROS2 Humble</span>
+          <span class="pill">rosbridge_suite</span>
+          <span class="pill">ROSLIB.js</span>
+          <span class="pill">Custom Interfaces</span>
+          <span class="pill">Nav / Odometry</span>
+          <span class="pill">LiDAR / LaserScan</span>
+          <span class="pill">MultiThreadedExecutor</span>
+          <span class="pill">tf_transformations</span>
         </div>
       </div>
 
@@ -844,9 +900,10 @@
         <div class="skill-pills">
           <span class="pill">Git</span>
           <span class="pill">Docker</span>
-          <span class="pill">Linux</span>
+          <span class="pill">Linux / WSL2</span>
           <span class="pill">CI/CD</span>
           <span class="pill">Postman</span>
+          <span class="pill">Gazebo</span>
         </div>
       </div>
     </div>
@@ -1016,9 +1073,9 @@
 
   // Typed text effect
   const phrases = [
-    'building intelligent systems...',
-    'angular specialist.',
-    'exploring ROS2 & robotics.',
+    'building autonomous systems...',
+    'ROS2 + Python specialist.',
+    'angular + fastapi engineer.',
     'competitive programmer.',
     'open to robotics roles.',
   ];

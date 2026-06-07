@@ -32,7 +32,6 @@
     overflow-x: hidden;
   }
 
-  /* GRID BG */
   body::before {
     content: '';
     position: fixed;
@@ -45,7 +44,6 @@
     z-index: 0;
   }
 
-  /* SCANLINES */
   body::after {
     content: '';
     position: fixed;
@@ -63,7 +61,6 @@
 
   section, nav, footer { position: relative; z-index: 1; }
 
-  /* ── NAV ── */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -103,7 +100,6 @@
 
   .nav-links a:hover { color: var(--accent); }
 
-  /* ── HERO ── */
   #hero {
     min-height: 100vh;
     display: flex;
@@ -234,7 +230,6 @@
     text-transform: uppercase;
   }
 
-  /* ── SECTION COMMON ── */
   .section-wrap {
     max-width: 1100px;
     margin: 0 auto;
@@ -269,7 +264,6 @@
     background: var(--border);
   }
 
-  /* ── PROJECTS ── */
   #projects { background: var(--bg2); }
 
   .projects-grid {
@@ -377,7 +371,6 @@
   .project-card.green .project-bullets li::before { color: var(--accent2); }
   .project-card.orange .project-bullets li::before { color: var(--accent3); }
 
-  /* ── SKILLS ── */
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -423,7 +416,6 @@
   }
   .pill:hover { border-color: var(--accent); color: var(--accent); }
 
-  /* ── EXPERIENCE ── */
   #experience { background: var(--bg2); }
 
   .timeline {
@@ -499,7 +491,6 @@
     top: 2px;
   }
 
-  /* ── ACHIEVEMENTS ── */
   .ach-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -521,7 +512,6 @@
   .ach-text { font-size: 13px; color: var(--text); line-height: 1.6; }
   .ach-text strong { color: #e8f4ff; font-weight: normal; font-family: 'Syne', sans-serif; }
 
-  /* ── CONTACT ── */
   #contact { background: var(--bg2); }
 
   .contact-inner {
@@ -636,7 +626,6 @@
     top: 3px;
   }
 
-  /* ── FOOTER ── */
   footer {
     border-top: 1px solid var(--border);
     padding: 28px 48px;
@@ -654,7 +643,6 @@
 
   footer span { color: var(--accent2); }
 
-  /* ── ANIMATIONS ── */
   .fade-up {
     opacity: 0;
     transform: translateY(28px);
@@ -662,7 +650,6 @@
   }
   .fade-up.visible { opacity: 1; transform: none; }
 
-  /* ── CORNER DECORATION ── */
   .corner-deco {
     position: absolute;
     top: 0; right: 0;
@@ -673,7 +660,6 @@
     opacity: 0.4;
   }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     nav { padding: 14px 20px; }
     .nav-links { gap: 20px; }
@@ -683,7 +669,6 @@
     footer { flex-direction: column; text-align: center; }
   }
 
-  /* ── TYPING CURSOR ── */
   #typed-text { color: var(--text); }
 </style>
 </head>
@@ -753,34 +738,26 @@
     <div class="projects-grid">
 
       <!-- RoboMission — Autonomous Nav -->
-       <div class="project-card fade-up" style="transition-delay:0.3s">
+      <div class="project-card fade-up" style="transition-delay:0.3s">
         <div class="project-icon">🧭</div>
-          <div class="project-tag-row">
-            <span class="tag highlight">Robotics</span>
-            <span class="tag">ROS2</span>
-            <span class="tag">Python</span>
-            <span class="tag">Obstacle Avoidance</span>
-          </div>
-          <div class="project-name">RoboMission — Autonomous Nav</div>
-          <div class="project-desc">ROS2 Python node implementing a custom <code style="font-size:11px;color:var(--accent)">MoveRobot</code> service that autonomously navigates a TurtleBot3 to target XY coordinates with real-time obstacle detection via LiDAR.</div>
-          <ul class="project-bullets">
-            <li>Custom <code style="font-size:11px;color:var(--accent)">turtlebot_interfaces/MoveRobot</code> service — <code style="font-size:11px;color:var(--accent)">float64 x/y → bool success</code></li>
-            <li>Rotate-then-drive strategy using <code style="font-size:11px;color:var(--accent)">atan2</code> heading and yaw from quaternion odometry</li>
-            <li>LiDAR scan listener on <code style="font-size:11px;color:var(--accent)">/scan</code> halts motion if front distance &lt; 0.4 m</li>
-            <li>Concurrent callbacks via <code style="font-size:11px;color:var(--accent)">MultiThreadedExecutor</code> + <code style="font-size:11px;color:var(--accent)">ReentrantCallbackGroup</code> — no spin deadlocks</li>
-            <li>Thread-safe odom reads using <code style="font-size:11px;color:var(--accent)">threading.Lock</code> across executor threads</li>
-          </ul>
-          <div class="project-stack">
-            <span class="stack-chip">ROS2 Humble</span>
-            <span class="stack-chip">Python</span>
-            <span class="stack-chip">nav_msgs</span>
-            <span class="stack-chip">sensor_msgs</span>
-            <span class="stack-chip">tf_transformations</span>
-            <span class="stack-chip">TurtleBot3</span>
-          </div>
+        <div class="project-tag-row">
+          <span class="tag highlight">Robotics</span>
+          <span class="tag">ROS2</span>
+          <span class="tag">Python</span>
+          <span class="tag">Obstacle Avoidance</span>
         </div>
+        <div class="project-name">RoboMission — Autonomous Nav</div>
+        <div class="project-desc">ROS2 Python node implementing a custom <code style="font-size:11px;color:var(--accent)">MoveRobot</code> service that autonomously navigates a TurtleBot3 to target XY coordinates with real-time obstacle detection via LiDAR.</div>
+        <ul class="project-bullets">
+          <li>Custom <code style="font-size:11px;color:var(--accent)">turtlebot_interfaces/MoveRobot</code> service — <code style="font-size:11px;color:var(--accent)">float64 x/y → bool success</code></li>
+          <li>Rotate-then-drive strategy using <code style="font-size:11px;color:var(--accent)">atan2</code> heading and yaw from quaternion odometry</li>
+          <li>LiDAR scan listener on <code style="font-size:11px;color:var(--accent)">/scan</code> halts motion if front distance &lt; 0.4 m</li>
+          <li>Concurrent callbacks via <code style="font-size:11px;color:var(--accent)">MultiThreadedExecutor</code> + <code style="font-size:11px;color:var(--accent)">ReentrantCallbackGroup</code> — no spin deadlocks</li>
+          <li>Thread-safe odom reads using <code style="font-size:11px;color:var(--accent)">threading.Lock</code> across executor threads</li>
+        </ul>
+      </div>
 
-    <!-- TurtleBot Control Station -->
+      <!-- TurtleBot Control Station -->
       <div class="project-card orange fade-up" style="transition-delay:0.2s">
         <div class="project-icon">🎥</div>
         <div class="project-tag-row">
@@ -797,28 +774,44 @@
           <li>Calls custom <code style="font-size:11px;color:var(--accent3)">MoveRobot</code> service — returns <code style="font-size:11px;color:var(--accent3)">success/message</code> on arrival</li>
           <li>Connection state indicator, stream auto-retry, and navigation status pills</li>
         </ul>
-        <div class="project-stack">
-          <span class="stack-chip">HTML/CSS/JS</span>
-          <span class="stack-chip">ROSLIB.js</span>
-          <span class="stack-chip">rosbridge_suite</span>
-          <span class="stack-chip">web_video_server</span>
-        </div>
       </div>
 
+      <!-- Web-Based Turtlesim Teleoperation Dashboard -->
       <div class="project-card fade-up">
         <div class="project-icon">🤖</div>
         <div class="project-tag-row">
           <span class="tag highlight">ROS2</span>
           <span class="tag">HTML/CSS/JavaScript</span>
-          <span class="tag">WebSockets (via ROSBridge)</span>
+          <span class="tag">WebSockets</span>
           <span class="tag">ROSLIBJS</span>
         </div>
         <div class="project-name">Web-Based Turtlesim Teleoperation Dashboard</div>
-        <div class="project-desc">Built a browser-based teleoperation dashboard to remotely control a simulated robot in ROS2 using real-time command publishing and telemetry monitoring. Integrated ROS topics and services through WebSockets to enable robot movement, pose tracking, and reset functionality from a web interface.</div>
+        <div class="project-desc">Browser-based teleoperation dashboard to remotely control a simulated robot in ROS2 using real-time command publishing and telemetry monitoring. Integrates ROS topics and services through WebSockets.</div>
         <ul class="project-bullets">
           <li>Remotely controls turtlesim movement using browser buttons by publishing velocity commands to ROS2 topics.</li>
-          <li>Displays the turtle’s real-time X and Y coordinates by subscribing to pose updates.</li>
+          <li>Displays the turtle's real-time X and Y coordinates by subscribing to pose updates.</li>
           <li>Supports simulator reset functionality through ROS2 service calls directly from the web interface.</li>
+        </ul>
+      </div>
+
+      <!-- TCP Chat Server — NEW -->
+      <div class="project-card green fade-up" style="transition-delay:0.15s">
+        <div class="project-icon">💬</div>
+        <div class="project-tag-row">
+          <span class="tag green">Systems / C</span>
+          <span class="tag">POSIX Sockets</span>
+          <span class="tag">pthreads</span>
+          <span class="tag">Networking</span>
+        </div>
+        <div class="project-name">TCP Chat — Multi-threaded Server/Client</div>
+        <div class="project-desc">Low-level multi-threaded TCP chat system in C with dual IPv4/IPv6 stack support. One pthread per connected client, mutex-guarded shared state, and ANSI-colored broadcast messaging — demonstrating the real-time networking fundamentals that underpin robot communication.</div>
+        <ul class="project-bullets">
+          <li>Dual-stack via <code style="font-size:11px;color:var(--accent2)">getaddrinfo(AF_UNSPEC)</code> — handles both IPv4 and IPv6 clients transparently</li>
+          <li>One <code style="font-size:11px;color:var(--accent2)">pthread</code> per client with <code style="font-size:11px;color:var(--accent2)">pthread_detach</code>; swap-with-last O(1) removal from client table</li>
+          <li><code style="font-size:11px;color:var(--accent2)">pthread_mutex_t</code>-guarded shared client registry — race-free broadcast to all peers</li>
+          <li>Client identifies itself via first message; server echoes formatted <code style="font-size:11px;color:var(--accent2)">[Name]: msg</code> with per-client ANSI color</li>
+          <li>Separate send/receive threads on the client side; clean disconnect on EOF (Ctrl-D)</li>
+          <li><code style="font-size:11px;color:var(--accent2)">SO_REUSEADDR</code> for fast server restart; supports up to 100 concurrent clients</li>
         </ul>
       </div>
 
@@ -855,7 +848,6 @@
           <span class="pill">PostgreSQL</span>
           <span class="pill">MySQL</span>
           <span class="pill">SQLAlchemy</span>
-          <span class="pill">MySQL</span>
         </div>
       </div>
 
@@ -895,6 +887,18 @@
         </div>
       </div>
 
+      <div class="skill-block fade-up" style="transition-delay:0.22s">
+        <div class="skill-block-title green">▸ Systems / C</div>
+        <div class="skill-pills">
+          <span class="pill">C (POSIX)</span>
+          <span class="pill">pthreads</span>
+          <span class="pill">TCP/IP Sockets</span>
+          <span class="pill">Mutex / Concurrency</span>
+          <span class="pill">IPv4 / IPv6</span>
+          <span class="pill">getaddrinfo</span>
+        </div>
+      </div>
+
       <div class="skill-block fade-up" style="transition-delay:0.25s">
         <div class="skill-block-title orange">▸ Tools</div>
         <div class="skill-pills">
@@ -904,6 +908,7 @@
           <span class="pill">CI/CD</span>
           <span class="pill">Postman</span>
           <span class="pill">Gazebo</span>
+          <span class="pill">GCC</span>
         </div>
       </div>
     </div>
@@ -994,9 +999,9 @@
           Let's build<br><span>something</span><br>together.
         </div>
         <p class="contact-sub fade-up">
-            I'm exploring robotics software engineering opportunities — particularly
-            in robot control systems, teleoperation, robot middleware, and autonomous systems.
-            Open to collaborations, projects, and conversations.
+          I'm exploring robotics software engineering opportunities — particularly
+          in robot control systems, teleoperation, robot middleware, and autonomous systems.
+          Open to collaborations, projects, and conversations.
         </p>
         <div class="contact-links fade-up">
           <a class="contact-link" href="mailto:moheetshendarkar@gmail.com">
@@ -1033,21 +1038,20 @@
       <div class="robotics-aside fade-up">
         <div class="aside-title">// Why Robotics?</div>
         <div class="aside-body">
-            I'm interested in robotics software engineering because it combines
-            real-time systems, networking, and human-machine interaction to control
-            physical systems. I'm particularly drawn to teleoperation, remote robot
-            control, and reliable robot communication — building software that enables
-            humans to safely monitor, operate, and supervise robots.
+          I'm interested in robotics software engineering because it combines
+          real-time systems, networking, and human-machine interaction to control
+          physical systems. I'm particularly drawn to teleoperation, remote robot
+          control, and reliable robot communication — building software that enables
+          humans to safely monitor, operate, and supervise robots.
         </div>
-        
         <ul class="interest-list">
-            <li>ROS2 node architecture & communication patterns</li>
-            <li>Teleoperation and remote robot control systems</li>
-            <li>Robot communication, low-latency networking & reliability</li>
-            <li>Robot simulation, testing & human-in-the-loop systems</li>
-            <li>Applying problem-solving skills to robot coordination and control</li>
+          <li>ROS2 node architecture & communication patterns</li>
+          <li>Teleoperation and remote robot control systems</li>
+          <li>Robot communication, low-latency networking & reliability</li>
+          <li>Robot simulation, testing & human-in-the-loop systems</li>
+          <li>Applying problem-solving skills to robot coordination and control</li>
         </ul>
-        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1060,21 +1064,18 @@
 </footer>
 
 <script>
-  // Intersection observer for fade-up
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-      }
+      if (e.isIntersecting) e.target.classList.add('visible');
     });
   }, { threshold: 0.1 });
 
   document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 
-  // Typed text effect
   const phrases = [
     'building autonomous systems...',
     'ROS2 developer.',
+    'systems programmer (C/pthreads).',
     'angular + fastapi engineer.',
     'competitive programmer.',
     'open to robotics roles.',
@@ -1102,7 +1103,6 @@
   }
   type();
 
-  // Trigger hero items immediately
   document.querySelectorAll('#hero .fade-up').forEach((el, i) => {
     setTimeout(() => el.classList.add('visible'), i * 120);
   });

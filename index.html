@@ -30,6 +30,8 @@
     font-size: 14px;
     line-height: 1.7;
     overflow-x: hidden;
+    /* FIX: Ensure body never causes horizontal scroll */
+    max-width: 100vw;
   }
 
   body::before {
@@ -65,6 +67,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 24px;
     padding: 16px 48px;
     background: rgba(8,12,16,0.85);
     backdrop-filter: blur(12px);
@@ -78,10 +81,33 @@
   .nav-links a:hover { color: var(--accent); }
 
   /* ── HERO ── */
-  #hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 120px 48px 80px; max-width: 1100px; margin: 0 auto; }
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 48px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+    /* FIX: prevent hero from overflowing */
+    overflow: hidden;
+  }
   .hero-tag { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--accent2); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
   .hero-tag::before { content: ''; width: 32px; height: 1px; background: var(--accent2); }
-  h1 { font-family: 'Syne', sans-serif; font-size: clamp(48px, 8vw, 96px); font-weight: 800; line-height: 0.95; letter-spacing: -0.02em; color: #e8f4ff; margin-bottom: 8px; }
+
+  /* FIX: the main culprit — tighter clamp with a hard cap so it never blows out on narrow screens */
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 10vw, 96px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: #e8f4ff;
+    margin-bottom: 8px;
+    /* FIX: allow wrapping and prevent overflow */
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
   h1 .accent { color: var(--accent); }
   .hero-role { font-family: 'Share Tech Mono', monospace; font-size: 16px; color: var(--accent3); letter-spacing: 0.08em; margin: 28px 0 24px; display: flex; align-items: center; gap: 10px; }
   .blink { display: inline-block; width: 10px; height: 18px; background: var(--accent3); animation: blink 1s step-end infinite; vertical-align: middle; }
@@ -103,7 +129,7 @@
   .section-wrap { max-width: 1100px; margin: 0 auto; padding: 100px 48px; }
   .section-header { display: flex; align-items: center; gap: 20px; margin-bottom: 64px; }
   .section-num { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--accent2); letter-spacing: 0.2em; }
-  .section-title { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; color: #e8f4ff; letter-spacing: -0.02em; }
+  .section-title { font-family: 'Syne', sans-serif; font-size: clamp(22px, 6vw, 36px); font-weight: 800; color: #e8f4ff; letter-spacing: -0.02em; }
   .section-line { flex: 1; height: 1px; background: var(--border); }
 
   /* ── PROJECTS ── */
@@ -147,7 +173,6 @@
     overflow: hidden;
   }
 
-  /* Collapsed state: shows thumbnail / play button */
   .video-thumb {
     display: flex;
     flex-direction: column;
@@ -187,7 +212,6 @@
     color: var(--muted);
   }
 
-  /* Expanded state: iframe */
   .video-player {
     display: none;
     position: relative;
@@ -215,7 +239,6 @@
   }
   .video-close:hover { color: var(--accent); border-color: var(--accent); }
 
-  /* No demo state */
   .no-demo {
     display: flex;
     align-items: center;
@@ -250,7 +273,7 @@
   .project-card.green .project-bullets li::before { color: var(--accent2); }
   .project-card.orange .project-bullets li::before { color: var(--accent3); }
 
-  /* ── CARD FOOTER (github link) ── */
+  /* ── CARD FOOTER ── */
   .project-footer {
     padding: 16px 28px 20px;
     display: flex;
@@ -275,8 +298,6 @@
   }
   .github-link:hover { color: var(--accent2); border-color: var(--accent2); }
   .github-link svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
-
-  /* placeholder link style */
   .github-link.placeholder { opacity: 0.4; pointer-events: none; }
 
   /* ── SKILLS ── */
@@ -322,6 +343,8 @@
   .contact-link:hover { border-color: var(--accent); color: var(--accent); }
   .contact-link-icon { font-size: 18px; width: 36px; text-align: center; flex-shrink: 0; }
   .contact-link-label { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--muted); display: block; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2px; }
+  /* FIX: email address can overflow on small screens */
+  .contact-link > div { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .robotics-aside { background: var(--surface); border: 1px solid var(--border); padding: 32px; }
   .aside-title { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--accent3); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 20px; }
   .aside-body { font-size: 13px; color: var(--muted); line-height: 1.8; margin-bottom: 24px; }
@@ -341,12 +364,62 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
-    nav { padding: 14px 20px; }
-    .nav-links { gap: 20px; }
-    #hero { padding: 100px 20px 60px; }
-    .section-wrap { padding: 72px 20px; }
+    /* Nav */
+    nav { padding: 14px 20px; gap: 16px; }
+    .nav-logo { font-size: 13px; letter-spacing: 0.06em; white-space: nowrap; }
+    .nav-links { gap: 12px; }
+    .nav-links a { font-size: 10px; letter-spacing: 0.04em; }
+
+    /* Hero */
+    #hero { padding: 90px 20px 60px; }
+
+    /* FIX: typed text role can overflow — allow wrapping */
+    .hero-role {
+      font-size: 13px;
+      flex-wrap: wrap;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+
+    /* FIX: stat row gets cramped — tighter gaps, smaller numbers */
+    .hero-stats { gap: 24px; margin-top: 40px; padding-top: 28px; }
+    .stat-num { font-size: 24px; }
+
+    /* Sections */
+    .section-wrap { padding: 64px 20px; }
+
+    /* FIX: projects grid → single column on narrow screens */
+    .projects-grid { grid-template-columns: 1fr; }
+
+    /* FIX: skills grid → single column */
+    .skills-grid { grid-template-columns: 1fr; }
+
+    /* FIX: achievements grid → single column */
+    .ach-grid { grid-template-columns: 1fr; }
+
+    /* Contact */
     .contact-inner { grid-template-columns: 1fr; gap: 40px; }
-    footer { flex-direction: column; text-align: center; }
+    .contact-headline { font-size: 32px; }
+
+    /* FIX: contact links email overflow */
+    .contact-link { font-size: 12px; }
+
+    /* Footer */
+    footer { flex-direction: column; text-align: center; padding: 20px; }
+
+    /* FIX: corner deco causes horizontal overflow on mobile — hide it */
+    .corner-deco { display: none; }
+  }
+
+  /* Extra-small screens (≤ 380px) */
+  @media (max-width: 380px) {
+    nav { padding: 12px 16px; }
+    /* Hide nav links, show only logo */
+    .nav-links { display: none; }
+    #hero { padding: 80px 16px 48px; }
+    .section-wrap { padding: 56px 16px; }
+    .hero-cta { flex-direction: column; }
+    .btn { justify-content: center; }
   }
 
   #typed-text { color: var(--text); }
@@ -406,7 +479,6 @@
 
       <!-- ① RoboMission — Autonomous Nav -->
       <div class="project-card fade-up" style="transition-delay:0.1s">
-        <!-- VIDEO: replace the src with your Google Drive /preview link -->
         <div class="project-video-wrap">
           <div class="video-thumb" onclick="openVideo(this)">
             <div class="play-btn">▶</div>
@@ -414,7 +486,6 @@
           </div>
           <div class="video-player">
             <button class="video-close" onclick="closeVideo(this)">✕</button>
-            <!-- REPLACE src below with your Drive /preview link -->
             <iframe
               src="https://drive.google.com/file/d/1oJuTH92qPly5E2iYlW0mTkpD4ivGRoQp/preview"
               allow="autoplay"
@@ -441,7 +512,6 @@
           </ul>
         </div>
         <div class="project-footer">
-          <!-- REPLACE href with your GitHub repo URL -->
           <a class="github-link" href="https://github.com/moheet-dev/ROS2/tree/main/robo-mission" target="_blank">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
             View Code
@@ -736,19 +806,68 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 
-  /* ── Video open/close ── */
+  /* ── Video: autoplay on scroll into view, pause on scroll out ── */
+  function getBaseSrc(iframe) {
+    // Strip any existing autoplay param to get a clean base URL
+    return iframe.getAttribute('data-src') || iframe.src.split('?')[0];
+  }
+
+  // Store original src on each iframe before we ever modify it
+  document.querySelectorAll('.video-player iframe').forEach(iframe => {
+    iframe.setAttribute('data-src', iframe.src.split('?')[0]);
+    // Start with src empty so Drive doesn't preload all videos on page load
+    iframe.src = '';
+  });
+
+  const videoObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const wrap  = entry.target;
+      const thumb  = wrap.querySelector('.video-thumb');
+      const player = wrap.querySelector('.video-player');
+      const iframe = wrap.querySelector('iframe');
+      const base   = iframe.getAttribute('data-src');
+
+      if (entry.isIntersecting) {
+        // Show player, inject autoplay src
+        thumb.style.display  = 'none';
+        player.style.display = 'block';
+        if (!iframe.src.includes('autoplay=1')) {
+          iframe.src = base + '?autoplay=1';
+        }
+      } else {
+        // Pause by clearing src, show thumb again
+        iframe.src = '';
+        player.style.display = 'none';
+        thumb.style.display  = 'flex';
+      }
+    });
+  }, { threshold: 0.6 });
+
+  document.querySelectorAll('.project-video-wrap').forEach(wrap => {
+    videoObs.observe(wrap);
+  });
+
+  function closeVideo(closeBtn) {
+    const wrap   = closeBtn.closest('.project-video-wrap');
+    const iframe = wrap.querySelector('iframe');
+    const thumb  = wrap.querySelector('.video-thumb');
+    const player = wrap.querySelector('.video-player');
+    iframe.src           = '';
+    player.style.display = 'none';
+    thumb.style.display  = 'flex';
+    // Temporarily unobserve so closing doesn't immediately retrigger
+    videoObs.unobserve(wrap);
+    setTimeout(() => videoObs.observe(wrap), 1000);
+  }
+
+  // openVideo kept for any direct clicks (fallback)
   function openVideo(thumbEl) {
-    const wrap = thumbEl.closest('.project-video-wrap');
+    const wrap   = thumbEl.closest('.project-video-wrap');
+    const iframe = wrap.querySelector('iframe');
+    const base   = iframe.getAttribute('data-src');
     thumbEl.style.display = 'none';
     wrap.querySelector('.video-player').style.display = 'block';
-  }
-  function closeVideo(closeBtn) {
-    const wrap = closeBtn.closest('.project-video-wrap');
-    // Pause the iframe by reloading its src
-    const iframe = wrap.querySelector('iframe');
-    iframe.src = iframe.src;
-    wrap.querySelector('.video-player').style.display = 'none';
-    wrap.querySelector('.video-thumb').style.display = 'flex';
+    iframe.src = base + '?autoplay=1';
   }
 
   /* ── Typed text ── */
